@@ -3,7 +3,6 @@
 #include "Floor.h"
 #include "Goal.h"
 #include "Wall.h"
-#include <iostream>
 
 UWorld::UWorld()
 {

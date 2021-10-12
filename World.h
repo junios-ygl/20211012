@@ -3,6 +3,8 @@
 #include <vector>
 #include "Vector2D.h"
 #include "Actor.h"
+#include <iostream>
+
 
 class APlayer;
 class AFloor;
