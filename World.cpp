@@ -87,4 +87,24 @@ void UWorld::Run()
 	}
 }
 
+void UWorld::AddPlayer(APlayer* NewPlayer)
+{
+	Player = NewPlayer;
+}
+
+void UWorld::AddWall(AWall* NewWall)
+{
+	Walls.push_back(NewWall);
+}
+
+void UWorld::AddFloor(AFloor* NewFloor)
+{
+	Floors.push_back(NewFloor);
+}
+
+void UWorld::AddGoal(AGoal* NewGoal)
+{
+	Goal = NewGoal;
+}
+
 

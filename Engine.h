@@ -19,8 +19,11 @@ public: //사용자(개발자 다른 프로그램 만드는 개발자)
 	*/
 	void Run();
 
-	template<typename T>
-	void CreateActor(FVector2D NewLocation);
+	void SpawnPlayer(FVector2D NewLocation);
+	void SpawnWall(FVector2D NewLocation);
+	void SpawnGoal(FVector2D NewLocation);
+	void SpawnFloor(FVector2D NewLocation);
+
 
 private: //실제 개발자가 사용
 
@@ -36,9 +39,3 @@ private: //실제 개발자가 사용
 
 	class UWorld* World;
 };
-
-template<typename T>
-void UEngine::CreateActor(FVector2D NewLocation)
-{
-	World->CreateActor<T>(NewLocation);
-}

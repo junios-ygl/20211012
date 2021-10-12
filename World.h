@@ -4,6 +4,7 @@
 #include "Vector2D.h"
 #include "Actor.h"
 #include <iostream>
+#include <typeinfo>
 
 
 class APlayer;
@@ -17,31 +18,21 @@ public:
 	UWorld();
 	~UWorld();
 
-
 	void Init();
 	void Term();
 
-	template<typename T>
-	void CreateActor(FVector2D NewLocation);
-
-
 	void Run();
+
+	void AddPlayer(APlayer* NewPlayer);
+	void AddWall(AWall* NewWall);
+	void AddFloor(AFloor* NewFloor);
+	void AddGoal(AGoal* Goal);
+
 private:
-
-
-
 	std::vector<AWall*> Walls;
 	std::vector<AFloor*> Floors;
 
 	APlayer* Player;
 	AGoal* Goal;
+
 };
-
-template<typename T>
-void UWorld::CreateActor(FVector2D NewLocation)
-{
-	AActor* NewActor = new T();
-	NewActor->SetLocation(NewLocation);
-
-	std::cout << NewActor << std::endl;
-}
