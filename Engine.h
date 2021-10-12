@@ -1,5 +1,9 @@
 #pragma once
 
+#include "Vector2D.h"
+#include "Actor.h"
+#include "World.h"
+
 class UEngine
 {
 public: //사용자(개발자 다른 프로그램 만드는 개발자)
@@ -12,6 +16,9 @@ public: //사용자(개발자 다른 프로그램 만드는 개발자)
 	* 출력 : 없음 
 	*/
 	void Run();
+
+	template<typename T>
+	void CreateActor(FVector2D NewLocation);
 
 private: //실제 개발자가 사용
 
@@ -28,3 +35,8 @@ private: //실제 개발자가 사용
 	class UWorld* World;
 };
 
+template<typename T>
+void UEngine::CreateActor(FVector2D NewLocation)
+{
+	World->CreateActor<T>(NewLocation);
+}
