@@ -14,8 +14,15 @@ public:
 	~UWorld();
 
 
+	void Init();
+	void Term();
+
+
 	void Run();
 private:
+
+
+
 	std::vector<AWall*> Walls;
 	std::vector<AFloor*> Floors;
 
