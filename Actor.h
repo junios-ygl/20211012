@@ -10,10 +10,12 @@ public:
 	void Input();
 	void Tick();
 	void Render();
+
+	//Accessor
 	void SetLocation(FVector2D NewLocation);
 	FVector2D GetLocation();
 
-private:
+protected: // 상속 안해 좀
 	FVector2D Location;
 };
 
