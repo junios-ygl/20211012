@@ -1,15 +1,13 @@
 #pragma once
 
 #include "Vector2D.h"
+#include "Actor.h"
 
-class AGoal
+class AGoal : public AActor
 {
 public:
 	AGoal();
 	~AGoal();
-
-private:
-	FVector2D Location;
 
 	void Render();
 };

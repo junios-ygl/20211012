@@ -1,17 +1,33 @@
 #include <iostream>
 #include "Engine.h"
 
+#include "Player.h"
+#include "Floor.h"
+#include "Wall.h"
+#include "Goal.h"
+
 using namespace std;
 
 
 
 int main()
 {
-	UEngine* Engine = new UEngine();
+	APlayer Player;
+	AFloor Floor;
+	AWall Wall;
+	AGoal Goal;
 
-	Engine->Run();
+	Player.Render();
+	Floor.Render();
+	Goal.Render();
+	Wall.Render();
 
-	delete Engine;
+
+	//UEngine* Engine = new UEngine();
+
+	//Engine->Run();
+
+	//delete Engine;
 
 	return 0;
 }
