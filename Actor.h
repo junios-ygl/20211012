@@ -30,7 +30,7 @@ public:
 	FVector2D GetLocation();
 
 //private:
-protected: // 상속 안해 좀
+protected: // 상속 해줌, 밖에서 접근 불가
 	FVector2D Location;
 };
 

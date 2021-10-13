@@ -1,4 +1,8 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+
 #include "Engine.h"
 
 #include "Player.h"
@@ -9,28 +13,17 @@
 using namespace std;
 
 
-
-
 int main()
 {
-	UEngine Engine;
+    ifstream fin;
+    fin.open("map01.txt");
+    string line;
+    while (!fin.eof())
+    {
+        getline(fin, line);
+        cout << line << endl;
+    }
+    fin.close();
 
-	Engine.SpawnPlayer(FVector2D(2, 2));
-	Engine.SpawnWall(FVector2D(1, 1));
-	Engine.SpawnWall(FVector2D(2, 1));
-	Engine.SpawnWall(FVector2D(3, 1));
-	Engine.SpawnWall(FVector2D(4, 1));
-	Engine.SpawnWall(FVector2D(5, 1));
-	Engine.SpawnWall(FVector2D(6, 1));
-	Engine.SpawnWall(FVector2D(7, 1));
-	Engine.SpawnWall(FVector2D(8, 1));
-	Engine.SpawnWall(FVector2D(9, 1));
-	Engine.SpawnWall(FVector2D(10, 1));
-	Engine.SpawnGoal(FVector2D(9, 9));
-
-
-	Engine.Run();
-
-
-	return 0;
+    return EXIT_SUCCESS;
 }
