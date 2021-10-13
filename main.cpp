@@ -121,6 +121,18 @@ public:
 
 int main()
 {
+    int a[10];
+
+    for (int i = 0; i < 10; ++i)
+    {
+        a[i];
+    }
+
+    for (int c : a)
+    {
+
+    }
+
     vector<Character*> Characters;
 
     Characters.push_back(new Player());
@@ -148,12 +160,13 @@ int main()
     {
         Characters[i]->Move();
     }
-    for (auto PlayCharacter : Characters)
+    for (Character* PlayCharacter : Characters)
     {
         PlayCharacter->Move();
     }
 
-    for (auto iter = Characters.begin(); iter != Characters.end(); ++iter)
+    //for (auto iter = Characters.begin(); iter != Characters.end(); ++iter)
+    for (vector<Character*>::iterator iter = Characters.begin(); iter != Characters.end(); ++iter)
     {
         (*iter)->Move();
     }
