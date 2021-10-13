@@ -12,11 +12,8 @@ AWall::~AWall()
 
 void AWall::Render()
 {
-	//위치지정
-	COORD Cur;
-	Cur.X = Location.X;
-	Cur.Y = Location.Y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+	AActor::Render();
+
 	//출력
 	std::cout << "#" << std::endl;
 }

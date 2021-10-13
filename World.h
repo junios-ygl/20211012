@@ -35,4 +35,6 @@ private:
 	APlayer* Player;
 	AGoal* Goal;
 
+	std::vector<AActor*> Actors;
+
 };

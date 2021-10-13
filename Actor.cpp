@@ -1,5 +1,6 @@
 #include "Actor.h"
 #include <iostream>
+#include <windows.h>
 
 AActor::AActor()
 {
@@ -19,7 +20,12 @@ void AActor::Tick()
 
 void AActor::Render()
 {
-	std::cout << "Actor Render()" << std::endl;
+	//std::cout << "Actor Render()" << std::endl;
+		//위치지정
+	COORD Cur;
+	Cur.X = Location.X;
+	Cur.Y = Location.Y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
 }
 
 void AActor::SetLocation(FVector2D NewLocation)

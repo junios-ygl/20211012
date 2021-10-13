@@ -59,52 +59,66 @@ void UWorld::Run()
 		//Input
 		//Tick
 		//Render
-		for (size_t i = 0; i < Walls.size(); ++i)
-		{
-			if (Walls[i] != nullptr)
-			{
-				Walls[i]->Render();
-			}
-		}
+		//for (size_t i = 0; i < Walls.size(); ++i)
+		//{
+		//	if (Walls[i] != nullptr)
+		//	{
+		//		Walls[i]->Render();
+		//	}
+		//}
 
-		for (size_t i = 0; i < Floors.size(); ++i)
-		{
-			if (Floors[i] != nullptr)
-			{
-				Floors[i]->Render();
-			}
-		}
+		//for (size_t i = 0; i < Floors.size(); ++i)
+		//{
+		//	if (Floors[i] != nullptr)
+		//	{
+		//		Floors[i]->Render();
+		//	}
+		//}
 
-		if (Player != nullptr)
-		{
-			Player->Render();
-		}
+		//if (Player != nullptr)
+		//{
+		//	Player->Render();
+		//}
 
-		if (Goal != nullptr)
+		//if (Goal != nullptr)
+		//{
+		//	Goal->Render();
+		//}
+
+		//for (AActor* CurrentActor : Actors)
+		//{
+		//	CurrentActor->Render();
+		//}
+		for (auto CurrentActor = Actors.begin(); CurrentActor != Actors.end(); CurrentActor++)
 		{
-			Goal->Render();
+			(*CurrentActor)->Render();
 		}
 	}
 }
 
 void UWorld::AddPlayer(APlayer* NewPlayer)
 {
-	Player = NewPlayer;
+	//Player = NewPlayer;
+	Actors.push_back(NewPlayer);
 }
 
 void UWorld::AddWall(AWall* NewWall)
 {
-	Walls.push_back(NewWall);
+	//Walls.push_back(NewWall);
+	Actors.push_back(NewWall);
 }
 
 void UWorld::AddFloor(AFloor* NewFloor)
 {
-	Floors.push_back(NewFloor);
+	//Floors.push_back(NewFloor);
+	Actors.push_back(NewFloor);
 }
 
 void UWorld::AddGoal(AGoal* NewGoal)
 {
-	Goal = NewGoal;
+	//Goal = NewGoal;
+	Actors.push_back(NewGoal);
+
 }
 
 

@@ -23,7 +23,7 @@ public:
 
 	void Input();
 	void Tick();
-	void Render();
+	virtual void Render(); //override
 
 	//Accessor
 	void SetLocation(FVector2D NewLocation);

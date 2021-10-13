@@ -10,7 +10,7 @@ public:
 	APlayer();
 	~APlayer();
 
-	void Render();
+	virtual void Render() override;
 
 };
 

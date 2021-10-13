@@ -1,15 +1,18 @@
 #include "Engine.h"
+#include "Player.h"
 
 using namespace std;
 
 int main()
 {
+
+
     UEngine Engine;
 
     bool Result = Engine.LoadLevel("map01.dat");
     if (!Result)
     {
-        cout << "fail load mapdata." << endl;
+        cout << "fail load map data." << endl;
         return 1;
     }
 
