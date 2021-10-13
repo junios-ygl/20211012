@@ -1,6 +1,10 @@
 #include <iostream>
+#include <array>
+#include <vector>
 #include "Engine.h"
 #include "Player.h"
+#include <time.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -17,7 +21,7 @@ public:
         cout << "Character 파괴" << endl;
     }
 
-    virtual void Move() = 0;
+    virtual void Move() = 0; //순수 가상 함수, 인터페이스, 바로 생성, 상속 후에 생성
 };
 
 class Player : public Character
@@ -34,7 +38,7 @@ public:
 
     virtual void Move() override
     {
-
+        cout << "Player 이동" << endl;
     }
 };
 
@@ -54,7 +58,7 @@ public:
 
     virtual void Move() override
     {
-
+        cout << "Monster 이동" << endl;
     }
 };
 
@@ -69,9 +73,14 @@ public:
     {
         cout << "Goblin 파괴" << endl;
     }
+
+    virtual void Move() override
+    {
+        cout << "Goblin 이동" << endl;
+    }
 };
 
-class Slime
+class Slime : public Monster
 {
 public:
     Slime()
@@ -83,9 +92,14 @@ public:
     {
         cout << "Slime 파괴" << endl;
     }
+
+    virtual void Move() override
+    {
+        cout << "Slime 이동" << endl;
+    }
 };
 
-class Hog
+class Hog : public Monster
 {
 public:
     Hog()
@@ -96,17 +110,54 @@ public:
     {
         cout << "Hog 파괴" << endl;
     }
+
+    virtual void Move() override
+    {
+        cout << "Hog 이동" << endl;
+    }
 };
 
 
 
 int main()
 {
-    Character* character = new Player();
+    vector<Character*> Characters;
 
-    Character* goblin = new Goblin();
+    Characters.push_back(new Player());
 
-    delete goblin;
+    srand(time(nullptr));
+
+    for (int i = 0; i < 10; ++i)
+    {
+        int Type = rand() % 3;
+        if (Type == 0)
+        {
+            Characters.push_back(new Goblin());
+        } 
+        else if (Type == 1)
+        {
+            Characters.push_back(new Slime());
+        }
+        else 
+        {
+            Characters.push_back(new Hog());
+        }
+    }
+
+    for (size_t i = 0; i < Characters.size(); ++i)
+    {
+        Characters[i]->Move();
+    }
+    for (auto PlayCharacter : Characters)
+    {
+        PlayCharacter->Move();
+    }
+
+    for (auto iter = Characters.begin(); iter != Characters.end(); ++iter)
+    {
+        (*iter)->Move();
+    }
+
 
     //UEngine Engine;
 
