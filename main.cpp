@@ -1,7 +1,5 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
+
 
 #include "Engine.h"
 
@@ -15,15 +13,17 @@ using namespace std;
 
 int main()
 {
-    ifstream fin;
-    fin.open("map01.txt");
-    string line;
-    while (!fin.eof())
-    {
-        getline(fin, line);
-        cout << line << endl;
-    }
-    fin.close();
+    UEngine Engine;
 
-    return EXIT_SUCCESS;
+    bool Result = Engine.LoadLevel("map01.dat");
+    if (!Result)
+    {
+        cout << "fail load mapdata." << endl;
+        return 1;
+    }
+
+    Engine.Run();
+
+
+    return 0;
 }

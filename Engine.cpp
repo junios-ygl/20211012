@@ -1,9 +1,13 @@
+#include <iostream>
+#include <fstream>
+#include <string>
 #include "Engine.h"
 #include "World.h"
 #include "Player.h"
 #include "Floor.h"
 #include "Goal.h"
 #include "Wall.h"
+
 
 UEngine::UEngine()
 {
@@ -18,6 +22,50 @@ UEngine::~UEngine()
 void UEngine::Run()
 {
 	World->Run();
+}
+
+bool UEngine::LoadLevel(std::string filename)
+{
+    std::ifstream fin;
+    std::string line;
+
+    fin.open(filename);
+
+    if (!fin.is_open())
+    {
+        return false;
+    }
+
+    int Y = 0;
+    while (!fin.eof())
+    {
+        getline(fin, line);
+
+        for (size_t X = 0; X < line.length(); ++X)
+        {
+            if (line[X] == '#')
+            {
+                SpawnWall(FVector2D(X, Y));
+            }
+            else if (line[X] == 'P')
+            {
+                SpawnPlayer(FVector2D(X, Y));
+            }
+            else if (line[X] == 'G')
+            {
+                SpawnGoal(FVector2D(X, Y));
+            }
+            else if (line[X] == ' ')
+            {
+                SpawnFloor(FVector2D(X, Y));
+            }
+        }
+
+        Y++;
+    }
+    fin.close();
+
+	return true;
 }
 
 void UEngine::SpawnPlayer(FVector2D NewLocation)
